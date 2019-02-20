@@ -69,3 +69,33 @@ class recordF {
         return new record($fieldNames, $values);
     }
 }
+
+class html {
+
+    public static function buildTable($records) {
+        $html_str = "<table class=\"table\" border=\"1\"><thead class=\"thead-dark\"><tr>";
+        $headers = array_keys($records[0]->returnArray());
+        foreach ($headers as $header) {
+            $html_str .= "<th>";
+            $html_str .= $header;
+            $html_str .= "</th>";
+        }
+        $html_str .= "</tr></thead>";
+        $html_str .= "<tbody>";
+        foreach ($records as $row) {
+            $row = array_values($row->returnArray());
+            $html_str .= "<tr>";
+            foreach ($row as $col) {
+                $html_str .= "<td>";
+                $html_str .= $col;
+                $html_str .= "</td>";
+            }
+            $html_str .= "</tr>";
+        }
+        $html_str .= "</tbody></table>";
+        print_r($html_str);
+    }
+}
+?>
+</body>
+</html>
