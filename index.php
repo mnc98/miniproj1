@@ -63,3 +63,9 @@ class record {
         $this->{$field} = $value;
     }
 }
+
+class recordF {
+    public static function create(Array $fieldNames = null, Array $values = null) {
+        return new record($fieldNames, $values);
+    }
+}
